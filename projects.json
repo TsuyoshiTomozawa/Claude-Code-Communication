@@ -1,0 +1,20 @@
+{
+  "projects": {
+    "pwe-api": {
+      "path": "/Users/you/projects/pwe-api",
+      "type": "git",
+      "default_branch": "main"
+    },
+    "pwe-frontend": {
+      "path": "/Users/you/projects/pwe-frontend",
+      "type": "git",
+      "default_branch": "main"
+    },
+    "pwe-admin": {
+      "path": "/Users/you/projects/pwe-admin",
+      "type": "git",
+      "default_branch": "main"
+    }
+  },
+  "worktree_base": "/tmp/agent-worktrees"
+}

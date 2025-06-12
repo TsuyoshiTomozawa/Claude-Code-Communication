@@ -10,7 +10,26 @@
       "Bash(*worker*_done.txt*)",
       "Bash(mkdir:*)",
       "Bash(then)",
-      "Bash(else)"
+      "Bash(else)",
+      "Bash(for i in {0..3})",
+      "Bash(do tmux send-keys -t multiagent:0.$i 'claude' C-m)",
+      "Bash(done)",
+      "Bash([ -f ./tmp/worker2_done.txt ])",
+      "Bash([ -f ./tmp/worker3_done.txt ])",
+      "Bash(then echo \"全員の作業完了を確認（最後の完了者として報告）\")",
+      "Bash(else echo \"他のworkerの完了を待機中...\")",
+      "Bash(fi)",
+      "Bash([ -f ./tmp/worker2_done.txt ])",
+      "Bash([ -f ./tmp/worker3_done.txt ])",
+      "Bash(then echo \"全員の作業完了を確認（最後の完了者として報告）\")",
+      "Bash(else echo \"他のworkerの完了を待機中...\")",
+      "Bash(fi)",
+      "Bash([ -f ./tmp/worker2_done.txt ])",
+      "Bash([ -f ./tmp/worker3_done.txt ])",
+      "Bash(fi)",
+      "Bash(ls:*)",
+      "Bash(chmod:*)",
+      "Bash(git add:*)"
     ],
     "deny": []
   }
