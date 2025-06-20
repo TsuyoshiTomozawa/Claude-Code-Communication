@@ -29,8 +29,14 @@ fi
 **作業環境のセットアップ:**
 ```bash
 # worker-helper.shを使用して作業環境を準備
+# このスクリプトは自動的にプロジェクトのCLAUDE.mdを読み込み、表示します
 ./worker-helper.sh setup "受信したメッセージ全体"
 ```
+
+**CLAUDE.md について:**
+- 各プロジェクトにはプロジェクト固有の指示が含まれたCLAUDE.mdファイルがある場合があります
+- worker-helper.shが自動的にこのファイルを検出して表示します
+- 表示された内容に従って作業を進めてください
 
 **実際の作業例:**
 ```bash
@@ -49,12 +55,15 @@ make build
 # git add/commit等
 ```
 
-**作業完了報告:**
+**作業完了とPR作成:**
 ```bash
-# 簡易報告
-./agent-send-v2.sh boss1 "worker1: テスト実行を完了しました"
+# Pull Request を作成（デフォルトブランチに対して）
+./worker-helper.sh create-pr worker1 "テスト実行" /path/to/project
 
-# または worker-helperを使用
+# boss1への完了報告
+./agent-send-v2.sh boss1 "worker1: テスト実行を完了しました。PRを作成しました。"
+
+# または worker-helperを使用した報告のみ
 ./worker-helper.sh report worker1 "テスト実行" boss1
 ```
 
@@ -68,14 +77,19 @@ git branch --show-current
 # 作業実行
 # ... 各種作業 ...
 
-# 作業完了後、変更をpush
-git add .
-git commit -m "タスク完了: [作業内容]"
-git push origin $(git branch --show-current)
+# 作業完了後、PR作成（自動でcommit/push/PR作成まで実行）
+./worker-helper.sh create-pr worker1 "機能実装" $(pwd)
 
 # boss1に報告
-./agent-send-v2.sh boss1 "worker1: ブランチ $(git branch --show-current) で作業完了、PRの準備ができました"
+./agent-send-v2.sh boss1 "worker1: ブランチ $(git branch --show-current) で作業完了、PRを作成しました"
 ```
+
+**PR作成時の動作:**
+- 未コミットの変更があれば自動的にコミット
+- 現在のブランチをリモートにプッシュ
+- projects.jsonで定義されたデフォルトブランチ（default_branch）に対してPRを作成
+- GitHub CLI（gh）がインストールされている場合は自動でPR作成
+- ghがない場合は手動作成の案内を表示
 
 ## 利用可能なツール
 - `agent-send-v2.sh`: boss1への報告（汎用版）
