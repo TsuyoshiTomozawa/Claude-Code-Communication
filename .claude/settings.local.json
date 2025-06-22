@@ -143,7 +143,11 @@
       "Bash(git -C /Users/michael244/work/QuickCorrect push origin main)",
       "Bash(git -C /Users/michael244/work/QuickCorrect add docs/reports/worker2/report.md)",
       "Bash(git -C /Users/michael244/work/QuickCorrect commit -m \"Add worker2 (開発者B) work report\n\n- Detailed report on Controller layer implementation\n- Coverage of issues #3, #6, #4, and #16\n- Technical details on EventBus architecture\n- Integration challenges and solutions\n- Lessons learned from the project\")",
-      "Bash(git -C /Users/michael244/work/QuickCorrect push origin main)"
+      "Bash(git -C /Users/michael244/work/QuickCorrect push origin main)",
+      "Bash(USE_WORKTREE=true ./boss-allocator.sh allocate \"pwe-apiプロジェクトで以下を実装:\n- worker1にIssue #36 (バックエンド基盤とデータベース実装) - データベースモデル、スキーマ、基本サービス層、Redis設定\n- worker2にIssue #37 (REST APIエンドポイント実装) - 全REST APIエンドポイント、認証・認可、エラーハンドリング\n- worker3にIssue #38 (WebSocketリアルタイム通信実装) - WebSocketエンドポイント、接続管理、Redis Pub/Sub統合\")",
+      "mcp__github__get_issue",
+      "Bash(tmux list-sessions:*)",
+      "Bash(tmux list-panes:*)"
     ],
     "deny": []
   }
